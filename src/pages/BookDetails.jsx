@@ -48,7 +48,8 @@ const BookDetails = () => {
     }
   };
 
-  const canModify = isAuthenticated && (user?.id === book?.addedBy?._id || user?.role === 'admin');
+  const userId = user?.id || user?._id;
+  const canModify = isAuthenticated && (userId === book?.addedBy?._id || user?.role === 'admin');
 
   if (loading) return <Loading />;
   if (!book) return null;
